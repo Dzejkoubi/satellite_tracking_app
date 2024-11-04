@@ -15,10 +15,10 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const StyledCupertinoLargeText(
+            const LargeTextStyledCupertino(
               text: "Welcome to the app",
             ),
-            StyledCupertinoIconButton(
+            IconButtonStyledCupertino(
               40,
               icon: CupertinoIcons.arrow_right_circle_fill,
               onPressed: () {

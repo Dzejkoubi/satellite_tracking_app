@@ -1,21 +1,27 @@
 import 'package:flutter/cupertino.dart';
 
-class StyledCupertinoTextButton extends StatelessWidget {
-  const StyledCupertinoTextButton(
-      {required this.child, required this.onPressed, super.key});
-
+class TextButtonStyledCupertino extends StatelessWidget {
   final Widget child;
-
   final void Function() onPressed;
+
+  const TextButtonStyledCupertino(
+      {required this.child, required this.onPressed, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(onPressed: onPressed, child: child);
+    return CupertinoButton(
+      onPressed: onPressed,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      color: const CupertinoDynamicColor.withBrightness(
+          color: CupertinoColors.lightBackgroundGray,
+          darkColor: CupertinoColors.darkBackgroundGray),
+      child: child,
+    );
   }
 }
 
-class StyledCupertinoIconButton extends StatelessWidget {
-  const StyledCupertinoIconButton(this.iconSize,
+class IconButtonStyledCupertino extends StatelessWidget {
+  const IconButtonStyledCupertino(this.iconSize,
       {required this.icon, required this.onPressed, super.key});
 
   final IconData icon;
@@ -26,7 +32,6 @@ class StyledCupertinoIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoButton(
       onPressed: onPressed,
-      pressedOpacity: 0.5,
       child: Icon(
         icon,
         size: iconSize,
@@ -35,11 +40,23 @@ class StyledCupertinoIconButton extends StatelessWidget {
   }
 }
 
-class StyledCupertinoToggleButton extends StatelessWidget {
-  const StyledCupertinoToggleButton({super.key});
+class ToggleButtonStyledCupertino extends StatelessWidget {
+  final bool value;
+  final ValueChanged<bool> onToggle;
+
+  const ToggleButtonStyledCupertino({
+    Key? key,
+    required this.value,
+    required this.onToggle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return CupertinoSwitch(
+      value: value,
+      onChanged: (bool newValue) {
+        onToggle(newValue);
+      },
+    );
   }
 }

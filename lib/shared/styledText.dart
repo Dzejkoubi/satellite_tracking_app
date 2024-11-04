@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-class StyledCupertinoLargeText extends StatelessWidget {
-  const StyledCupertinoLargeText({required this.text, super.key});
-
+class LargeTextStyledCupertino extends StatelessWidget {
   final String text;
+
+  const LargeTextStyledCupertino({required this.text, super.key});
+
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -13,21 +14,24 @@ class StyledCupertinoLargeText extends StatelessWidget {
   }
 }
 
-class StyledCupertinoImportantText extends StatelessWidget {
-  const StyledCupertinoImportantText({required this.text, super.key});
-
+class ImportantTextStyledCupertino extends StatelessWidget {
   final String text;
+
+  const ImportantTextStyledCupertino({required this.text, super.key});
+
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: CupertinoTheme.of(context).textTheme.navTitleTextStyle,
+      style: CupertinoTheme.of(context).textTheme.navTitleTextStyle.copyWith(
+            color: CupertinoColors.activeBlue,
+          ),
     );
   }
 }
 
-class StyledCupertinoNormalText extends StatelessWidget {
-  const StyledCupertinoNormalText({required this.text, super.key});
+class NormalTextStyledCupertino extends StatelessWidget {
+  const NormalTextStyledCupertino({required this.text, super.key});
 
   final String text;
   @override

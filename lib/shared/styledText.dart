@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class LargeTextStyled extends StatelessWidget {
-  const LargeTextStyled({required this.text, super.key});
+class StyledCupertinoLargeText extends StatelessWidget {
+  const StyledCupertinoLargeText({required this.text, super.key});
 
   final String text;
   @override
@@ -13,8 +13,8 @@ class LargeTextStyled extends StatelessWidget {
   }
 }
 
-class ImportantTextStyled extends StatelessWidget {
-  const ImportantTextStyled({required this.text, super.key});
+class StyledCupertinoImportantText extends StatelessWidget {
+  const StyledCupertinoImportantText({required this.text, super.key});
 
   final String text;
   @override
@@ -26,8 +26,8 @@ class ImportantTextStyled extends StatelessWidget {
   }
 }
 
-class NormalTextStyled extends StatelessWidget {
-  const NormalTextStyled({required this.text, super.key});
+class StyledCupertinoNormalText extends StatelessWidget {
+  const StyledCupertinoNormalText({required this.text, super.key});
 
   final String text;
   @override

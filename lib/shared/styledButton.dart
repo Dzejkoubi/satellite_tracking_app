@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class StyledTextButton extends StatelessWidget {
-  const StyledTextButton(
+class StyledCupertinoTextButton extends StatelessWidget {
+  const StyledCupertinoTextButton(
       {required this.child, required this.onPressed, super.key});
 
   final Widget child;
@@ -10,12 +10,33 @@ class StyledTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(child: child, onPressed: onPressed);
+    return CupertinoButton(onPressed: onPressed, child: child);
   }
 }
 
-class StyledIconButton extends StatelessWidget {
-  const StyledIconButton({super.key});
+class StyledCupertinoIconButton extends StatelessWidget {
+  const StyledCupertinoIconButton(this.iconSize,
+      {required this.icon, required this.onPressed, super.key});
+
+  final IconData icon;
+  final void Function() onPressed;
+  final double iconSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoButton(
+      onPressed: onPressed,
+      pressedOpacity: 0.5,
+      child: Icon(
+        icon,
+        size: iconSize,
+      ),
+    );
+  }
+}
+
+class StyledCupertinoToggleButton extends StatelessWidget {
+  const StyledCupertinoToggleButton({super.key});
 
   @override
   Widget build(BuildContext context) {

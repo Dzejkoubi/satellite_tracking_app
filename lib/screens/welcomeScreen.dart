@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:hodina_6/Routes/router.dart';
+import 'package:hodina_6/shared/styledButton.dart';
 import 'package:hodina_6/shared/styledText.dart';
 
 @RoutePage()
@@ -15,14 +15,16 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const LargeTextStyled(
+            const StyledCupertinoLargeText(
               text: "Welcome to the app",
             ),
-            IconButton(
-                onPressed: () {
-                  AutoRouter.of(context).replace(const IdRoute());
-                },
-                icon: const Icon(Icons.arrow_forward_ios_rounded)),
+            StyledCupertinoIconButton(
+              40,
+              icon: CupertinoIcons.arrow_right_circle_fill,
+              onPressed: () {
+                AutoRouter.of(context).replace(const IdRoute());
+              },
+            )
           ],
         ),
       ),

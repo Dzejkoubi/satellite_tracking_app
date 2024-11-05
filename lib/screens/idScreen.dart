@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hodina_6/Routes/router.dart';
 import 'package:hodina_6/shared/spaceBoxes.dart';
 import 'package:hodina_6/shared/styledButton.dart';
@@ -14,11 +15,19 @@ class IdScreen extends StatefulWidget {
 }
 
 class _IdScreenState extends State<IdScreen> {
+  final TextEditingController _controller = TextEditingController();
+
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   bool visible = true;
 
   void _toggleVisibility(bool newValue) {
     setState(() {
       visible = newValue;
+      print(newValue);
     });
   }
 
@@ -35,8 +44,18 @@ class _IdScreenState extends State<IdScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CupertinoTextField(
+                CupertinoTextField(
+                  controller: _controller,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   placeholder: 'Enter the ID',
+                  suffix: IconButtonStyledCupertino(
+                    20,
+                    icon: CupertinoIcons.clear,
+                    onPressed: () {
+                      _controller.clear();
+                    },
+                  ),
                 ),
                 const HorizontalSpace(height: 5),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [

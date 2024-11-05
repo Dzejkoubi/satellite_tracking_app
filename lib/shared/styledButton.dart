@@ -56,6 +56,7 @@ class ToggleButtonStyledCupertino extends StatelessWidget {
       value: value,
       onChanged: (bool newValue) {
         onToggle(newValue);
+        print(newValue);
       },
     );
   }

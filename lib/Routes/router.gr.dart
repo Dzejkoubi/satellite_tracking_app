@@ -29,6 +29,25 @@ class IdRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [InformationScreen]
+class InformationRoute extends PageRouteInfo<void> {
+  const InformationRoute({List<PageRouteInfo>? children})
+      : super(
+          InformationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'InformationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const InformationScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [LocationListScreen]
 class LocationListRoute extends PageRouteInfo<void> {
   const LocationListRoute({List<PageRouteInfo>? children})
@@ -43,25 +62,6 @@ class LocationListRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const LocationListScreen();
-    },
-  );
-}
-
-/// generated route for
-/// [VisualizationScreen]
-class VisualizationRoute extends PageRouteInfo<void> {
-  const VisualizationRoute({List<PageRouteInfo>? children})
-      : super(
-          VisualizationRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'VisualizationRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const VisualizationScreen();
     },
   );
 }

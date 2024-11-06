@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:hodina_6/widgets/locationWidget.dart';
-import 'package:hodina_6/shared/styledText.dart';
+import 'package:hodina_6/widgets/location_widget.dart';
+import 'package:hodina_6/shared/styled_text.dart';
 
 @RoutePage()
 class LocationListScreen extends StatelessWidget {

@@ -1,10 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:hodina_6/Routes/router.dart';
-import 'package:hodina_6/shared/spaceBoxes.dart';
-import 'package:hodina_6/shared/styledButton.dart';
-import 'package:hodina_6/shared/styledText.dart';
+import 'package:hodina_6/shared/space_boxes.dart';
+import 'package:hodina_6/shared/styled_button.dart';
+import 'package:hodina_6/shared/styled_text.dart';
 
 @RoutePage()
 class IdScreen extends StatefulWidget {
@@ -17,6 +16,7 @@ class IdScreen extends StatefulWidget {
 class _IdScreenState extends State<IdScreen> {
   final TextEditingController _controller = TextEditingController();
 
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();

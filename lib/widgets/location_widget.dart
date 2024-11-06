@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:hodina_6/Routes/router.dart';
-import 'package:hodina_6/shared/styledText.dart';
+import 'package:hodina_6/shared/styled_text.dart';
 
 class LocationWidget extends StatelessWidget {
   const LocationWidget({required this.rise, super.key});
@@ -11,7 +11,7 @@ class LocationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.router.push(VisualizationRoute()),
+      onTap: () => context.router.push(const InformationRoute()),
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Row(
@@ -20,7 +20,7 @@ class LocationWidget extends StatelessWidget {
             NormalTextStyledCupertino(text: rise),
             IconButton(
                 onPressed: () {
-                  context.router.push(VisualizationRoute());
+                  context.router.push(const InformationRoute());
                 },
                 icon: const Icon(Icons.arrow_forward_ios_rounded)),
           ],

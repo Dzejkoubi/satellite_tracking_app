@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hodina_6/shared/styledText.dart';
+import 'package:hodina_6/shared/styled_text.dart';
 
 class InformationBox extends StatelessWidget {
   const InformationBox(

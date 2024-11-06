@@ -1,14 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 
 import 'package:flutter/cupertino.dart';
-import 'package:hodina_6/shared/spaceBoxes.dart';
-import 'package:hodina_6/shared/styledText.dart';
-import 'package:hodina_6/widgets/informationBox.dart';
-import '';
+import 'package:hodina_6/shared/space_boxes.dart';
+import 'package:hodina_6/shared/styled_text.dart';
+import 'package:hodina_6/widgets/information_box.dart';
 
 @RoutePage()
-class VisualizationScreen extends StatelessWidget {
-  const VisualizationScreen({super.key});
+class InformationScreen extends StatelessWidget {
+  const InformationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

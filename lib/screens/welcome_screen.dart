@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hodina_6/Routes/router.dart';
-import 'package:hodina_6/shared/styledButton.dart';
-import 'package:hodina_6/shared/styledText.dart';
+import 'package:hodina_6/shared/styled_button.dart';
+import 'package:hodina_6/shared/styled_text.dart';
 
 @RoutePage()
 class WelcomeScreen extends StatelessWidget {

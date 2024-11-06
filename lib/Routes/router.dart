@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:hodina_6/screens/welcomeScreen.dart';
-import 'package:hodina_6/screens/idScreen.dart';
-import 'package:hodina_6/screens/locationListScreen.dart';
-import 'package:hodina_6/screens/visualizationScreen.dart';
+import 'package:hodina_6/screens/welcome_screen.dart';
+import 'package:hodina_6/screens/id_screen.dart';
+import 'package:hodina_6/screens/location_list_screen.dart';
+import 'package:hodina_6/screens/information_screen.dart';
 
 part 'router.gr.dart';
 
@@ -13,7 +13,7 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: WelcomeRoute.page, initial: false),
         AutoRoute(page: IdRoute.page, initial: false),
         AutoRoute(page: LocationListRoute.page, initial: false),
-        AutoRoute(page: VisualizationRoute.page, initial: true),
+        AutoRoute(page: InformationRoute.page, initial: true),
       ];
 }
 

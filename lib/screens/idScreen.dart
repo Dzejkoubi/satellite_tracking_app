@@ -35,7 +35,7 @@ class _IdScreenState extends State<IdScreen> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
-        middle: Text("Satelite ID"),
+        middle: NormalTextStyledCupertino(text: "Satelite ID"),
       ),
       child: SafeArea(
         child: Padding(

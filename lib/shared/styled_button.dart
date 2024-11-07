@@ -11,10 +11,14 @@ class ButtonStyledCupertino extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoContainer(
-      decoration: const BoxDecoration(
-        color: CupertinoDynamicColor.withBrightness(
+      decoration: BoxDecoration(
+        color: CupertinoDynamicColor.resolve(
+          const CupertinoDynamicColor.withBrightness(
             color: CupertinoColors.lightBackgroundGray,
-            darkColor: CupertinoColors.darkBackgroundGray),
+            darkColor: CupertinoColors.darkBackgroundGray,
+          ),
+          context,
+        ),
       ),
       child: CupertinoButton(
         onPressed: onPressed,

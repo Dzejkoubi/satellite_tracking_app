@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hodina_6/shared/space_boxes.dart';
 import 'package:hodina_6/shared/styled_text.dart';
 import 'package:cupertino_container/cupertino_container.dart';
@@ -47,7 +48,32 @@ class InformationBox extends StatelessWidget {
                 child:
                     ImportantTextStyledCupertino(text: position.toUpperCase()),
               ),
-              const Positioned(right: 0, child: Icon(CupertinoIcons.info)),
+              Positioned(
+                right: 0,
+                child: GestureDetector(
+                  child: const Icon(CupertinoIcons.info),
+                  onTap: () {
+                    showCupertinoModalPopup(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CupertinoActionSheet(
+                          title: Text(position.toUpperCase()),
+                          message: const Text(
+                              'Additional information about this position.'),
+                          actions: <CupertinoActionSheetAction>[
+                            CupertinoActionSheetAction(
+                              child: const Text('Close'),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
             ],
           ),
           const HorizontalSpace(height: 10),

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hodina_6/Routes/router.dart';
-import 'package:hodina_6/shared/styled_button.dart';
 import 'package:hodina_6/shared/styled_text.dart';
 
 @RoutePage()
@@ -18,9 +18,9 @@ class WelcomeScreen extends StatelessWidget {
             const LargeTextStyledCupertino(
               text: "Welcome to the app",
             ),
-            IconButtonStyledCupertino(
-              40,
-              icon: CupertinoIcons.arrow_right_circle_fill,
+            IconButton(
+              iconSize: 40,
+              icon: const Icon(CupertinoIcons.arrow_right_circle_fill),
               onPressed: () {
                 AutoRouter.of(context).replace(const IdRoute());
               },

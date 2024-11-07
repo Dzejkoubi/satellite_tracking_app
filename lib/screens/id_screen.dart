@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hodina_6/Routes/router.dart';
 import 'package:hodina_6/shared/space_boxes.dart';
 import 'package:hodina_6/shared/styled_button.dart';
@@ -49,9 +50,9 @@ class _IdScreenState extends State<IdScreen> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   placeholder: 'Enter the ID',
-                  suffix: IconButtonStyledCupertino(
-                    20,
-                    icon: CupertinoIcons.clear,
+                  suffix: IconButton(
+                    iconSize: 20,
+                    icon: const Icon(CupertinoIcons.clear),
                     onPressed: () {
                       _controller.clear();
                     },
@@ -69,7 +70,7 @@ class _IdScreenState extends State<IdScreen> {
                   ),
                 ]),
                 const HorizontalSpace(height: 50),
-                TextButtonStyledCupertino(
+                ButtonStyledCupertino(
                     onPressed: () {
                       AutoRouter.of(context).push(const LocationListRoute());
                     },

@@ -67,6 +67,25 @@ class LocationListRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [VisualizationScreen]
+class VisualizationRoute extends PageRouteInfo<void> {
+  const VisualizationRoute({List<PageRouteInfo>? children})
+      : super(
+          VisualizationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'VisualizationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const VisualizationScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [WelcomeScreen]
 class WelcomeRoute extends PageRouteInfo<void> {
   const WelcomeRoute({List<PageRouteInfo>? children})

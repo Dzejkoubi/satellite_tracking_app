@@ -57,9 +57,15 @@ class InformationBox extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return CupertinoActionSheet(
-                          title: Text(position.toUpperCase()),
-                          message: const Text(
-                              'Additional information about this position.'),
+                          title: ImportantTextStyledCupertino(
+                              text: position.toUpperCase()),
+                          message: Text(position == "rise"
+                              ? "This is when the satelite first shows up in the sky."
+                              : position == "culmination"
+                                  ? "This is when the satelite is at its highest point in the sky."
+                                  : position == "set"
+                                      ? "This is when the satelite disappears from the sky."
+                                      : "Unknown position"),
                           actions: <CupertinoActionSheetAction>[
                             CupertinoActionSheetAction(
                               child: const Text('Close'),
@@ -71,6 +77,30 @@ class InformationBox extends StatelessWidget {
                         );
                       },
                     );
+                    // showCupertinoDialog(
+                    //   context: context,
+                    //   builder: (BuildContext context) {
+                    //     return CupertinoAlertDialog(
+                    //       title: ImportantTextStyledCupertino(
+                    //           text: position.toUpperCase()),
+                    //       content: Text(position == "rise"
+                    //           ? "This is when the satelite first shows up in the sky"
+                    //           : position == "culmination"
+                    //               ? "This is when the satelite is at its highest point in the sky"
+                    //               : position == "set"
+                    //                   ? "This is when the satelite disappears from the sky"
+                    //                   : "Unknown position"),
+                    //       actions: [
+                    //         CupertinoDialogAction(
+                    //           child: const Text("OK"),
+                    //           onPressed: () {
+                    //             Navigator.of(context).pop();
+                    //           },
+                    //         ),
+                    //       ],
+                    //     );
+                    //   },
+                    // );
                   },
                 ),
               ),

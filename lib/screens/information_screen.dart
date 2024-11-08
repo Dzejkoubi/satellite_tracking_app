@@ -56,8 +56,8 @@ class InformationScreen extends StatelessWidget {
                 isSunlit: true,
               ),
               ButtonStyledCupertino(
-                  onPressed: () => AutoRouter.of(context)
-                      .replace(const VisualizationRoute()),
+                  onPressed: () =>
+                      context.router.push(const VisualizationRoute()),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

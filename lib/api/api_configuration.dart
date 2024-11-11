@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'satellite_data.dart';
 
 class ApiConfiguration {
-  static const String _baseUrl = "https://sat.terrestre.ar/";
+  static const String _baseUrl = "https://sat.terrestre.ar";
 
   static Future<SatelliteData> fetchSatellitePasses({
     required int sateliteId,
@@ -13,6 +13,7 @@ class ApiConfiguration {
   }) async {
     final String url =
         "$_baseUrl/passes/$sateliteId?lat=$lat&lon=$lon&limit=$limit";
+    print(url);
 
     try {
       final response = await http.post(Uri.parse(url));

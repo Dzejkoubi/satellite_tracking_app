@@ -49,10 +49,17 @@ class InformationRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [LocationListScreen]
-class LocationListRoute extends PageRouteInfo<void> {
-  const LocationListRoute({List<PageRouteInfo>? children})
-      : super(
+class LocationListRoute extends PageRouteInfo<LocationListRouteArgs> {
+  LocationListRoute({
+    required SatelliteData? data,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           LocationListRoute.name,
+          args: LocationListRouteArgs(
+            data: data,
+            key: key,
+          ),
           initialChildren: children,
         );
 
@@ -61,9 +68,29 @@ class LocationListRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const LocationListScreen();
+      final args = data.argsAs<LocationListRouteArgs>();
+      return LocationListScreen(
+        data: args.data,
+        key: args.key,
+      );
     },
   );
+}
+
+class LocationListRouteArgs {
+  const LocationListRouteArgs({
+    required this.data,
+    this.key,
+  });
+
+  final SatelliteData? data;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'LocationListRouteArgs{data: $data, key: $key}';
+  }
 }
 
 /// generated route for

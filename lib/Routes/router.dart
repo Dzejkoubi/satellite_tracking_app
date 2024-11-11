@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:hodina_6/api/satellite_data.dart';
 import 'package:hodina_6/screens/visualization_screen.dart';
 import 'package:hodina_6/screens/welcome_screen.dart';
 import 'package:hodina_6/screens/id_screen.dart';
@@ -20,3 +22,4 @@ class AppRouter extends RootStackRouter {
 }
 
 //For update run: flutter pub run build_runner build
+//For watch run: flutter pub run build_runner watch

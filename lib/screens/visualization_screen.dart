@@ -10,8 +10,8 @@ class VisualizationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          middle: const NormalTextStyledCupertino(text: "Satelites"),
+        navigationBar: const CupertinoNavigationBar(
+          middle: NormalTextStyledCupertino(text: "Satelites"),
         ),
         child: Container());
   }

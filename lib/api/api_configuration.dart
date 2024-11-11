@@ -16,8 +16,8 @@ class ApiConfiguration {
     print(url);
 
     try {
-      final response = await http.post(Uri.parse(url));
-      if (response.statusCode == 300) {
+      final response = await http.get(Uri.parse(url));
+      if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(response.body);
         return SatelliteData.fromJson(data);
       } else {

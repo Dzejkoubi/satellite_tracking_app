@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hodina_6/Routes/router.dart';
 import 'package:hodina_6/api/api_configuration.dart';
 import 'package:hodina_6/api/satellite_data.dart';
@@ -17,17 +18,16 @@ class IdScreen extends StatefulWidget {
 }
 
 class _IdScreenState extends State<IdScreen> {
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _sateliteIdController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    fetchData();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _sateliteIdController.dispose();
     super.dispose();
   }
 
@@ -46,13 +46,13 @@ class _IdScreenState extends State<IdScreen> {
 
   Future<void> fetchData() async {
     try {
+      final int sateliteId = int.parse(_sateliteIdController.text);
       final data = await ApiConfiguration.fetchSatellitePasses(
-          sateliteId: 25544, lat: 50.006462, lon: 14.486095, limit: 10);
+          sateliteId: sateliteId, lat: 50.006462, lon: 14.486095, limit: 10);
       setState(() {
         satelliteData = data;
         isLoading = false;
       });
-      print(data);
     } catch (e) {
       print("Error loading satellite passes: $e");
       setState(() {
@@ -75,7 +75,12 @@ class _IdScreenState extends State<IdScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CupertinoTextField(
-                  controller: _controller,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(5)
+                  ],
+                  controller: _sateliteIdController..text = "25544",
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   placeholder: 'Enter the ID of a satellite',
@@ -83,7 +88,7 @@ class _IdScreenState extends State<IdScreen> {
                     iconSize: 20,
                     icon: const Icon(CupertinoIcons.clear),
                     onPressed: () {
-                      _controller.clear();
+                      _sateliteIdController.clear();
                     },
                   ),
                 ),
@@ -100,8 +105,10 @@ class _IdScreenState extends State<IdScreen> {
                 ]),
                 const HorizontalSpace(height: 50),
                 ButtonStyledCupertino(
-                    onPressed: () {
-                      AutoRouter.of(context).push(const LocationListRoute());
+                    onPressed: () async {
+                      await fetchData();
+                      AutoRouter.of(context)
+                          .push(LocationListRoute(data: satelliteData));
                     },
                     child: const NormalTextStyledCupertino(
                         text: "Show Locations")),

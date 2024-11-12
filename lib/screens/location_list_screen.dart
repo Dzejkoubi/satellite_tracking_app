@@ -17,8 +17,6 @@ class LocationListScreen extends StatefulWidget {
 
 class _LocationListScreenState extends State<LocationListScreen> {
   String formatDate(String date) {
-    DateTime parsedDate = DateTime.parse(date);
-
     String formatedDateTime =
         DateFormat('yyyy. MM. dd – kk:mm').format(DateTime.parse(date));
 

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:hodina_6/shared/space_boxes.dart';
 import 'package:hodina_6/shared/styled_text.dart';
 import 'package:cupertino_container/cupertino_container.dart';

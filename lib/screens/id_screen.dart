@@ -65,6 +65,32 @@ class _IdScreenState extends State<IdScreen> {
     }
   }
 
+  final double _kItemExtent = 32.0;
+  final List<int> _numOfShowedSatellites = <int>[1, 5, 10, 20, 50, 100];
+
+  int _selectedNumOfSatellites = 0;
+
+  void _showDialog(Widget child) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => Container(
+        height: 216,
+        padding: const EdgeInsets.only(top: 6.0),
+        // The Bottom margin is provided to align the popup above the system navigation bar.
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        // Provide a background color for the popup.
+        color: CupertinoColors.systemBackground.resolveFrom(context),
+        // Use a SafeArea widget to avoid system overlaps.
+        child: SafeArea(
+          top: false,
+          child: child,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -97,16 +123,48 @@ class _IdScreenState extends State<IdScreen> {
                   ),
                 ),
                 const HorizontalSpace(height: 5),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const NormalTextStyledCupertino(
-                    text: "Visible",
-                  ),
-                  const VerticalSpace(width: 10),
-                  ToggleButtonStyledCupertino(
-                    value: visible,
-                    onToggle: _toggleVisibility,
-                  ),
-                ]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ButtonStyledCupertino(
+                      child: const Text("Show:"),
+                      onPressed: () => _showDialog(
+                        CupertinoPicker(
+                          magnification: 1.22,
+                          squeeze: 1.2,
+                          useMagnifier: true,
+                          itemExtent: _kItemExtent,
+                          // This sets the initial item.
+                          scrollController: FixedExtentScrollController(
+                            initialItem: _selectedNumOfSatellites,
+                          ),
+                          // This is called when selected item is changed.
+                          onSelectedItemChanged: (int selectedItem) {
+                            setState(() {
+                              _selectedNumOfSatellites = selectedItem;
+                            });
+                          },
+                          children: List<Widget>.generate(
+                              _numOfShowedSatellites.length, (int index) {
+                            return Center(
+                                child: Text(
+                                    _numOfShowedSatellites[index].toString()));
+                          }),
+                        ),
+                      ),
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      const NormalTextStyledCupertino(
+                        text: "Visible",
+                      ),
+                      const VerticalSpace(width: 10),
+                      ToggleButtonStyledCupertino(
+                        value: visible,
+                        onToggle: _toggleVisibility,
+                      ),
+                    ]),
+                  ],
+                ),
                 const HorizontalSpace(height: 50),
                 ButtonStyledCupertino(
                     onPressed: () async {

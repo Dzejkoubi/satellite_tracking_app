@@ -79,11 +79,6 @@ class _InformationScreenState extends State<InformationScreen> {
                       Icon(Icons.arrow_forward_ios_rounded)
                     ],
                   )),
-              ButtonStyledCupertino(
-                  child: Text("Print"),
-                  onPressed: () {
-                    print(widget.data);
-                  })
             ],
           )),
         ),

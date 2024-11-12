@@ -10,9 +10,10 @@ class ApiConfiguration {
     required double lat,
     required double lon,
     int limit = 10,
+    bool visibleOnly = false,
   }) async {
     final String url =
-        "$_baseUrl/passes/$sateliteId?lat=$lat&lon=$lon&limit=$limit";
+        "$_baseUrl/passes/$sateliteId?lat=$lat&lon=$lon&limit=$limit&visible_only=$visibleOnly";
     print(url);
 
     try {

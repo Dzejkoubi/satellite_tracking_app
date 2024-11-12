@@ -15,8 +15,8 @@ class InformationBox extends StatelessWidget {
       super.key});
 
   final String position;
-  final double altitute;
-  final double azimuth;
+  final String altitute;
+  final String azimuth;
   final String azimuthOctant;
   final String utcDateTime;
   final bool isSunlit;

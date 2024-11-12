@@ -48,7 +48,11 @@ class _IdScreenState extends State<IdScreen> {
     try {
       final int sateliteId = int.parse(_sateliteIdController.text);
       final data = await ApiConfiguration.fetchSatellitePasses(
-          sateliteId: sateliteId, lat: 50.006462, lon: 14.486095, limit: 10);
+          sateliteId: sateliteId,
+          lat: 50.006462,
+          lon: 14.486095,
+          limit: 10,
+          visibleOnly: visible);
       setState(() {
         satelliteData = data;
         isLoading = false;

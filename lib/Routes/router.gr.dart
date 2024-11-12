@@ -30,10 +30,17 @@ class IdRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [InformationScreen]
-class InformationRoute extends PageRouteInfo<void> {
-  const InformationRoute({List<PageRouteInfo>? children})
-      : super(
+class InformationRoute extends PageRouteInfo<InformationRouteArgs> {
+  InformationRoute({
+    required SatellitePass data,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           InformationRoute.name,
+          args: InformationRouteArgs(
+            data: data,
+            key: key,
+          ),
           initialChildren: children,
         );
 
@@ -42,9 +49,29 @@ class InformationRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const InformationScreen();
+      final args = data.argsAs<InformationRouteArgs>();
+      return InformationScreen(
+        data: args.data,
+        key: args.key,
+      );
     },
   );
+}
+
+class InformationRouteArgs {
+  const InformationRouteArgs({
+    required this.data,
+    this.key,
+  });
+
+  final SatellitePass data;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'InformationRouteArgs{data: $data, key: $key}';
+  }
 }
 
 /// generated route for

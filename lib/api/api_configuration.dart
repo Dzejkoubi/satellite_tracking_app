@@ -24,8 +24,7 @@ class ApiConfiguration {
         throw Exception("Failed to load data: ${response.statusCode}");
       }
     } catch (e) {
-      print("Error fetching data: $e");
-      rethrow;
+      throw Exception("Failed to load data: $e");
     }
   }
 }

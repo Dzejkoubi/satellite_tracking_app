@@ -78,13 +78,17 @@ class InformationRouteArgs {
 /// [LocationListScreen]
 class LocationListRoute extends PageRouteInfo<LocationListRouteArgs> {
   LocationListRoute({
-    required SatelliteData? data,
+    required int numberOfSatelites,
+    required bool isVisible,
+    required int sateliteId,
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           LocationListRoute.name,
           args: LocationListRouteArgs(
-            data: data,
+            numberOfSatelites: numberOfSatelites,
+            isVisible: isVisible,
+            sateliteId: sateliteId,
             key: key,
           ),
           initialChildren: children,
@@ -97,7 +101,9 @@ class LocationListRoute extends PageRouteInfo<LocationListRouteArgs> {
     builder: (data) {
       final args = data.argsAs<LocationListRouteArgs>();
       return LocationListScreen(
-        data: args.data,
+        numberOfSatelites: args.numberOfSatelites,
+        isVisible: args.isVisible,
+        sateliteId: args.sateliteId,
         key: args.key,
       );
     },
@@ -106,17 +112,23 @@ class LocationListRoute extends PageRouteInfo<LocationListRouteArgs> {
 
 class LocationListRouteArgs {
   const LocationListRouteArgs({
-    required this.data,
+    required this.numberOfSatelites,
+    required this.isVisible,
+    required this.sateliteId,
     this.key,
   });
 
-  final SatelliteData? data;
+  final int numberOfSatelites;
+
+  final bool isVisible;
+
+  final int sateliteId;
 
   final Key? key;
 
   @override
   String toString() {
-    return 'LocationListRouteArgs{data: $data, key: $key}';
+    return 'LocationListRouteArgs{numberOfSatelites: $numberOfSatelites, isVisible: $isVisible, sateliteId: $sateliteId, key: $key}';
   }
 }
 

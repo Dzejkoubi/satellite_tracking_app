@@ -41,34 +41,10 @@ class _IdScreenState extends State<IdScreen> {
     });
   }
 
-  SatelliteData? satelliteData;
-  bool isLoading = true;
-
-  Future<void> fetchData() async {
-    try {
-      final int sateliteId = int.parse(_sateliteIdController.text);
-      final data = await ApiConfiguration.fetchSatellitePasses(
-          sateliteId: sateliteId,
-          lat: 50.006462,
-          lon: 14.486095,
-          limit: 10,
-          visibleOnly: visible);
-      setState(() {
-        satelliteData = data;
-        isLoading = false;
-      });
-    } catch (e) {
-      print("Error loading satellite passes: $e");
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
-
   // Number of satellites to show
   final List<int> _numOfShowedSatellites = [1, 5, 10, 15, 20, 50];
 
-  final int _selectedNumOfSatellites = 10;
+  final int _selectedNumOfSatellites = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -120,9 +96,10 @@ class _IdScreenState extends State<IdScreen> {
                 const HorizontalSpace(height: 50),
                 ButtonStyledCupertino(
                     onPressed: () async {
-                      await fetchData();
-                      AutoRouter.of(context)
-                          .push(LocationListRoute(data: satelliteData));
+                      AutoRouter.of(context).push(LocationListRoute(
+                          numberOfSatelites: _selectedNumOfSatellites,
+                          isVisible: visible,
+                          sateliteId: int.parse(_sateliteIdController.text)));
                     },
                     child: const NormalTextStyledCupertino(
                         text: "Show Locations")),

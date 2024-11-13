@@ -14,7 +14,6 @@ class ApiConfiguration {
   }) async {
     final String url =
         "$_baseUrl/passes/$sateliteId?lat=$lat&lon=$lon&limit=$limit&visible_only=$visibleOnly";
-    print(url);
 
     try {
       final response = await http.get(Uri.parse(url));

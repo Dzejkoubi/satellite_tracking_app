@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hodina_6/api/api_configuration.dart';
@@ -10,12 +12,8 @@ import 'package:intl/intl.dart';
 @RoutePage()
 class LocationListScreen extends StatefulWidget {
   const LocationListScreen(
-      {required this.numberOfSatelites,
-      required this.isVisible,
-      required this.sateliteId,
-      super.key});
+      {required this.isVisible, required this.sateliteId, super.key});
 
-  final int numberOfSatelites;
   final bool isVisible;
   final int sateliteId;
 
@@ -33,22 +31,22 @@ class _LocationListScreenState extends State<LocationListScreen> {
 
   SatelliteData? satelliteData;
   bool isLoading = true;
+  int numberOfSatelites = 10;
 
   @override
   void initState() {
     super.initState();
-    fetchData();
+    fetchData(widget.sateliteId, numberOfSatelites, widget.isVisible);
   }
 
-  Future<void> fetchData() async {
+  Future<void> fetchData(satelliteId, int limit, bool isVisible) async {
     try {
-      final int sateliteId = widget.sateliteId;
       final data = await ApiConfiguration.fetchSatellitePasses(
-          sateliteId: sateliteId,
+          sateliteId: satelliteId,
           lat: 50.006462,
           lon: 14.486095,
-          limit: 10,
-          visibleOnly: widget.isVisible);
+          limit: limit,
+          visibleOnly: isVisible);
       setState(() {
         satelliteData = data;
         isLoading = false;
@@ -59,6 +57,25 @@ class _LocationListScreenState extends State<LocationListScreen> {
         isLoading = false;
       });
     }
+  }
+
+  // Load more data and preventing multiple clicks
+  bool isButtonEnabled = true;
+
+  void loadMore() {
+    if (isButtonEnabled == false) return;
+
+    setState(() {
+      isButtonEnabled = false;
+      isLoading = true;
+      numberOfSatelites += 10;
+    });
+
+    fetchData(widget.sateliteId, numberOfSatelites, widget.isVisible).then((_) {
+      setState(() {
+        isButtonEnabled = true;
+      });
+    });
   }
 
   @override
@@ -94,7 +111,12 @@ class _LocationListScreenState extends State<LocationListScreen> {
                     child: ButtonStyledCupertino(
                       child: const NormalTextStyledCupertino(text: "Load more"),
                       onPressed: () {
-                        fetchData();
+                        setState(() {
+                          isLoading = true;
+                          numberOfSatelites += 10;
+                        });
+                        fetchData(widget.sateliteId, numberOfSatelites,
+                            widget.isVisible);
                       },
                     ),
                   ),

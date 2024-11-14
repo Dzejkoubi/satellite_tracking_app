@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hodina_6/shared/space_boxes.dart';
+import 'package:hodina_6/shared/styled_button.dart';
 import 'package:hodina_6/shared/styled_text.dart';
 import 'package:cupertino_container/cupertino_container.dart';
+import 'package:intl/intl.dart';
 
 class InformationBox extends StatelessWidget {
   const InformationBox(this.visible,
@@ -21,6 +23,16 @@ class InformationBox extends StatelessWidget {
   final bool isSunlit;
 
   final bool visible;
+
+  String formatDate(String date) {
+    String formatedDateTime =
+        DateFormat('dd. MM. yyyy – kk:mm').format(DateTime.parse(date));
+
+    return formatedDateTime;
+  }
+
+  String get formatedDateTime =>
+      DateFormat('dd. MM. yyyy – kk:mm').format(DateTime.parse(utcDateTime));
 
   @override
   Widget build(BuildContext context) {
@@ -76,30 +88,6 @@ class InformationBox extends StatelessWidget {
                         );
                       },
                     );
-                    // showCupertinoDialog(
-                    //   context: context,
-                    //   builder: (BuildContext context) {
-                    //     return CupertinoAlertDialog(
-                    //       title: ImportantTextStyledCupertino(
-                    //           text: position.toUpperCase()),
-                    //       content: Text(position == "rise"
-                    //           ? "This is when the satelite first shows up in the sky"
-                    //           : position == "culmination"
-                    //               ? "This is when the satelite is at its highest point in the sky"
-                    //               : position == "set"
-                    //                   ? "This is when the satelite disappears from the sky"
-                    //                   : "Unknown position"),
-                    //       actions: [
-                    //         CupertinoDialogAction(
-                    //           child: const Text("OK"),
-                    //           onPressed: () {
-                    //             Navigator.of(context).pop();
-                    //           },
-                    //         ),
-                    //       ],
-                    //     );
-                    //   },
-                    // );
                   },
                 ),
               ),
@@ -110,7 +98,7 @@ class InformationBox extends StatelessWidget {
             NormalTextStyledCupertino(text: "Altitude: $altitute"),
             NormalTextStyledCupertino(
                 text: "Azimuth: $azimuth° $azimuthOctant"),
-            NormalTextStyledCupertino(text: "UTC: $utcDateTime"),
+            NormalTextStyledCupertino(text: "UTC:  $formatedDateTime"),
             Text(
               isSunlit ? "Sunlit" : "Not sunlit",
               style: TextStyle(

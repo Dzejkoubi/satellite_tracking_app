@@ -42,9 +42,6 @@ class _IdScreenState extends State<IdScreen> {
   }
 
   // Number of satellites to show
-  final List<int> _numOfShowedSatellites = [1, 5, 10, 15, 20, 50];
-
-  final int _selectedNumOfSatellites = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +94,6 @@ class _IdScreenState extends State<IdScreen> {
                 ButtonStyledCupertino(
                     onPressed: () async {
                       AutoRouter.of(context).push(LocationListRoute(
-                          numberOfSatelites: _selectedNumOfSatellites,
                           isVisible: visible,
                           sateliteId: int.parse(_sateliteIdController.text)));
                     },

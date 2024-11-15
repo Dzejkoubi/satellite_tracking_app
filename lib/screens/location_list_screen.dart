@@ -1,5 +1,3 @@
-import 'dart:core';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hodina_6/api/api_configuration.dart';
@@ -75,6 +73,12 @@ class _LocationListScreenState extends State<LocationListScreen> {
       setState(() {
         isButtonEnabled = true;
       });
+      // Future.delayed(const Duration(seconds: 2), () {
+      //   setState(() {
+      //     isButtonEnabled = true;
+      //   });
+      // });
+      // Tohle tady má být ale můj flutter z nějakého důvodu nepodporuje "Duration". Ano zkoušel jsem to i s importem "dart:async" nebo "dart:core" ale nepomohlo to. Taky jsem zkoušel flutter clear a flutter pub dev aby se to resetovalo ale nepomohlo to. Taky jsem zkoušel restartovat počítač ale nepomohlo to. Budu rád když se na to kouknete forknete mi tam jak by to mohlo vypadat aby to fungovalo nebo co bych měl ještě zkusit (Flutter se mi přeinstalovávat nechce protože by to bylo zas na půl dne)
     });
   }
 

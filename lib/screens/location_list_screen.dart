@@ -9,8 +9,11 @@ import 'package:intl/intl.dart';
 
 @RoutePage()
 class LocationListScreen extends StatefulWidget {
-  const LocationListScreen(
-      {required this.isVisible, required this.sateliteId, super.key});
+  const LocationListScreen({
+    required this.isVisible,
+    required this.sateliteId,
+    super.key,
+  });
 
   final bool isVisible;
   final int sateliteId;
